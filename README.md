@@ -1,1 +1,1 @@
-# javaeclipse-git
+# seisma-test
