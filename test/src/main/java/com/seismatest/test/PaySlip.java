@@ -4,7 +4,7 @@ public class PaySlip {
 	private String name;
 	private int payPeriod;
 	private int grossIncome;
-	private double incomeTax;
+	private int incomeTax;
 	private int netIncome;
 	private int empSuper;
 	
@@ -27,11 +27,11 @@ public class PaySlip {
 	public void setGrossIncome(int grossIncome) {
 		this.grossIncome = grossIncome;
 	}
-	public double getIncomeTax() {
+	public int getIncomeTax() {
 		return incomeTax;
 	}
 	public void setIncomeTax(double incomeTax) {
-		this.incomeTax = incomeTax;
+		this.incomeTax = (int) incomeTax;
 	}
 	public int getNetIncome() {
 		return netIncome;
