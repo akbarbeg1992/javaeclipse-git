@@ -18,7 +18,7 @@ public class TestController {
 	private final NavigableMap<Integer, Double> taxBracket = new TreeMap<Integer, Double>();
 	
 	
-	public TestController(Employee employee) {
+	public TestController( Employee employee ) {
 		super();
 		this.employee = employee;
 		this.paySlip = new PaySlip();
@@ -40,6 +40,8 @@ public class TestController {
 	}
 	
 	private void createPaySlip() {
+		this.paySlip.setName( this.employee.getFirstName() + " " + this.employee.getLastName() );
+		
 		this.paySlip.setIncomeTax( this.incomeTax );
 		
 		this.paySlip.setGrossIncome(  Math.round( this.employee.getAnnualSalary() / 12 ) );
