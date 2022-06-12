@@ -1,22 +1,28 @@
 package com.seismatest.test;
 
-import com.seismatest.test.Employee;
-import com.seismatest.test.PaySlip;
-import com.seismatest.test.TestController;
+import java.util.ArrayList;
 
 public class TestView {
-	Employee employee = new Employee( "Mirza", "Beg", 60050, 0.09f, 1 );
+	private ArrayList<Employee> employees;
+	private ArrayList<PaySlip> paySlips;
+	private TestController testController;
 	
-	TestController testController = new TestController( employee );
+	public TestView( ArrayList<Employee> employees ) {
+		this.employees = employees;
+		this.paySlips = new ArrayList<PaySlip>();
+		this.generatePaySlips();
+	}
 	
-	PaySlip paySlip = testController.getPaySlip();
+	private void generatePaySlips() {
+		
+		for ( Employee employee : this.employees ) {
+			this.testController = new TestController( employee );
+			this.paySlips.add( this.testController.getPaySlip() );
+		}
+	}
 	
-	
-	
-	Employee employee1 = new Employee( "F", "T", 120000, 0.10f, 1 );
-	
-	TestController testController1 = new TestController( employee1 );
-	
-	PaySlip paySlip1 = testController1.getPaySlip();
+	public ArrayList<PaySlip> getPaySlips() {
+		return this.paySlips;
+	}
 	
 }
