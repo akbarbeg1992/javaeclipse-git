@@ -14,7 +14,6 @@ public class TestView {
 	}
 	
 	private void generatePaySlips() {
-		
 		for ( Employee employee : this.employees ) {
 			this.testController = new TestController( employee );
 			this.paySlips.add( this.testController.getPaySlip() );
