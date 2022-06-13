@@ -21,7 +21,7 @@ public class TestController {
 	public TestController( Employee employee ) {
 		super();
 		this.employee = employee;
-		this.paySlip = new PaySlip();
+		this.paySlip = new PaySlip( employee );
 		this.initializeTaxBracketData();
 		this.determineTaxBracket();
 		this.calculateTax();
