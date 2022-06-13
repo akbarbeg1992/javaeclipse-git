@@ -1,6 +1,7 @@
 package com.seismatest.test;
 
 public class PaySlip {
+	private Employee employee;
 	private String name;
 	private int payPeriod;
 	private int grossIncome;
@@ -8,6 +9,11 @@ public class PaySlip {
 	private int netIncome;
 	private int empSuper;
 	
+	
+	public PaySlip( Employee employee ) {
+		super();
+		this.employee = employee;
+	}
 	
 	public String getName() {
 		return name;
@@ -44,6 +50,12 @@ public class PaySlip {
 	}
 	public void setEmpSuper(int empSuper) {
 		this.empSuper = empSuper;
+	}
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 	
 }
