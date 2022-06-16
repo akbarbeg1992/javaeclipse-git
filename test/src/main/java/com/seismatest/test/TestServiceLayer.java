@@ -4,7 +4,7 @@ import java.util.NavigableMap;
 import java.util.TreeMap;
 
 
-public class TestController {
+public class TestServiceLayer {
 
 	private Employee employee;
 	private PaySlip paySlip;
@@ -14,59 +14,51 @@ public class TestController {
 	private double taxBracketValue;
 	private int taxBracketKey;
 	
-	private final NavigableMap<Integer, Integer> prevTax = new TreeMap<Integer, Integer>();
-	private final NavigableMap<Integer, Double> taxBracket = new TreeMap<Integer, Double>();
+	private NavigableMap<Integer, Integer> prevTax = new TreeMap<Integer, Integer>();
+	private NavigableMap<Integer, Double> taxBracket = new TreeMap<Integer, Double>();
 	
 	
-	public TestController( Employee employee ) {
+	public TestServiceLayer( Employee employee, NavigableMap<Integer, Integer> prevTax, NavigableMap<Integer, Double> taxBracket ) {
 		super();
 		this.employee = employee;
 		this.paySlip = new PaySlip( employee );
-		this.initializeTaxBracketData();
-		this.determineTaxBracket();
-		this.calculateTax();
-		this.createPaySlip();
+		this.prevTax = prevTax;
+		this.taxBracket = taxBracket;
 	}
 
 	private void determineTaxBracket() {
-		this.prevTaxValue = this.prevTax.floorEntry( this.employee.getAnnualSalary() ).getValue();
-		
-		this.taxBracketValue = this.taxBracket.floorEntry( this.employee.getAnnualSalary() ).getValue();
-		this.taxBracketKey = this.taxBracket.floorEntry( this.employee.getAnnualSalary() ).getKey() - 1;
+		if ( this.employee.getAnnualSalary() > 0 ) {
+			this.prevTaxValue = this.prevTax.floorEntry( this.employee.getAnnualSalary() ).getValue();
+			this.taxBracketValue = this.taxBracket.floorEntry( this.employee.getAnnualSalary() ).getValue();
+			this.taxBracketKey = this.taxBracket.floorEntry( this.employee.getAnnualSalary() ).getKey() - 1;
+		}
+		else {
+			this.prevTaxValue = 0;
+			this.taxBracketValue = 0;
+			this.taxBracketKey = 0;
+		}
 	}
 
 	private void calculateTax() {
-		this.incomeTax = Math.round( ( this.prevTaxValue + ( this.employee.getAnnualSalary() - this.taxBracketKey ) * this.taxBracketValue ) / 12 );
+		this.incomeTax = Math.round( ( this.prevTaxValue + ( this.employee.getAnnualSalary() - this.taxBracketKey ) * this.taxBracketValue ) / 12.0 );
 	}
 	
-	private void createPaySlip() {
+	public void createPaySlip() {
+		this.determineTaxBracket();
+		this.calculateTax();
+		
 		this.paySlip.setName( this.employee.getFirstName() + " " + this.employee.getLastName() );
 		
-		this.paySlip.setIncomeTax( this.incomeTax );
+		this.paySlip.setIncomeTax( (int) this.incomeTax );
 		
-		this.paySlip.setGrossIncome(  Math.round( this.employee.getAnnualSalary() / 12 ) );
+		this.paySlip.setGrossIncome(  (int) Math.round( this.employee.getAnnualSalary() / 12.0 ) );
 		
 		this.paySlip.setNetIncome( (int) ( this.paySlip.getGrossIncome() - this.paySlip.getIncomeTax() ) );
 		
 		this.paySlip.setEmpSuper( Math.round( this.paySlip.getGrossIncome() * this.employee.getSuperRate() ) );
 	}
-	
-	private void initializeTaxBracketData() {
-		this.prevTax.put(0, 0);
-		this.prevTax.put(37001, 3572);
-		this.prevTax.put(87001, 19822);
-		this.prevTax.put(180001, 54232);
-		
-		this.taxBracket.put(0, 0.0);
-		this.taxBracket.put(18201, 0.19);
-		this.taxBracket.put(37001, 0.325);
-		this.taxBracket.put(87001, 0.37);
-		this.taxBracket.put(180001, 0.45);
-	}
-
 
 	public PaySlip getPaySlip() {
 		return paySlip;
 	}
-
 }

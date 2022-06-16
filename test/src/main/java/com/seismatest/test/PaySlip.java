@@ -10,6 +10,11 @@ public class PaySlip {
 	private int empSuper;
 	
 	
+	
+	public PaySlip() {
+		super();
+	}
+
 	public PaySlip( Employee employee ) {
 		super();
 		this.employee = employee;
@@ -36,7 +41,7 @@ public class PaySlip {
 	public int getIncomeTax() {
 		return incomeTax;
 	}
-	public void setIncomeTax(double incomeTax) {
+	public void setIncomeTax(int incomeTax) {
 		this.incomeTax = (int) incomeTax;
 	}
 	public int getNetIncome() {

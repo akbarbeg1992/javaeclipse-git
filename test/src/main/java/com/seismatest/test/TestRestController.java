@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestRestController {
 	
-	@PostMapping (
-		value = "/runApp",
+	
+	@PostMapping ( 
+		value = "/runApp", 
 		produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }
 	)
-	
+	  
 	public ArrayList<PaySlip> runApplication( @RequestBody ArrayList<Employee> employees ) {
-		TestView testView = new TestView( employees );
-		return testView.getPaySlips();
+		TestController testController = new TestController( employees );
+		return testController.getPaySlips(); 
 	}
 }

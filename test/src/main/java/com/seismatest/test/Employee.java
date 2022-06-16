@@ -8,6 +8,12 @@ public class Employee {
 	private int paymentStartDate;
 	
 	
+	
+	public Employee() {
+		super();
+	}
+
+
 	public Employee(String firstName, String lastName, int annualSalary, float superRate, int paymentStartDate) {
 		super();
 		this.firstName = firstName;
