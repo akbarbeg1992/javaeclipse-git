@@ -9,11 +9,6 @@ public class PaySlip {
 	private int netIncome;
 	private int empSuper;
 	
-	
-	
-	public PaySlip() {
-		super();
-	}
 
 	public PaySlip( Employee employee ) {
 		super();
