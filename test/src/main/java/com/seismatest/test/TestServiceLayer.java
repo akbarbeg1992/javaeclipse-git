@@ -55,7 +55,8 @@ public class TestServiceLayer {
 		
 		this.paySlip.setNetIncome( (int) ( this.paySlip.getGrossIncome() - this.paySlip.getIncomeTax() ) );
 		
-		this.paySlip.setEmpSuper( Math.round( this.paySlip.getGrossIncome() * this.employee.getSuperRate() ) );
+		int empSuper =  Math.round( this.paySlip.getGrossIncome() * this.employee.getSuperRate() );
+		this.paySlip.setEmpSuper( empSuper > 0 ? empSuper : 0 );
 	}
 
 	public PaySlip getPaySlip() {
