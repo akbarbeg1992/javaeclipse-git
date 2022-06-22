@@ -56,5 +56,4 @@ public class TestServiceLayerNew {
 	public PaySlip getPaySlip() {
 		return paySlip;
 	}
-
 }
