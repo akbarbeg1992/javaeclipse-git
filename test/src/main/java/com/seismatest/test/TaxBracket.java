@@ -2,16 +2,32 @@ package com.seismatest.test;
 
 public class TaxBracket {
 	
-	private int income;
+	private int taxThreshold;
 	private int previousTax;
 	private double taxRate;
 	
-	
-	public int getIncome() {
-		return income;
+	public TaxBracket() {
+		super();
 	}
-	public void setIncome(int income) {
-		this.income = income;
+	
+	public TaxBracket(int taxThreshold, int previousTax, double taxRate) {
+		super();
+		this.taxThreshold = taxThreshold;
+		this.previousTax = previousTax;
+		this.taxRate = taxRate;
+	}
+
+	public TaxBracket getTaxBracketIfIncomeMatchesThreshold( int annualSalary ) {
+		if ( annualSalary > this.taxThreshold )
+			return new TaxBracket( this.taxThreshold, this.previousTax, this.taxRate );
+		return null;
+	}
+	
+	public int getTaxThreshold() {
+		return taxThreshold;
+	}
+	public void setTaxThreshold(int taxThreshold) {
+		this.taxThreshold = taxThreshold;
 	}
 	public int getPreviousTax() {
 		return previousTax;
