@@ -3,9 +3,9 @@ EXPOSE 8080
 # ARG JAR_FILE=target/test-0.0.1-SNAPSHOT.jar
 # ADD ${JAR_FILE} test.jar
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY --from=maven_build /build/target/*.jar /app/test.jar
+# COPY --from=maven_build /build/target/*.jar /app/test.jar
 
 ENTRYPOINT ["java", "-jar", "test.jar"]
 
