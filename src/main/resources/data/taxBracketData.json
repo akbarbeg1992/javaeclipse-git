@@ -1,0 +1,27 @@
+[
+    {
+        "taxThreshold": 0,
+        "previousTax": 0,
+        "taxRate": 0.0
+    },
+    {
+        "taxThreshold": 18201,
+        "previousTax": 0,
+        "taxRate": 0.19
+    },
+    {
+        "taxThreshold": 37001,
+        "previousTax": 3572,
+        "taxRate": 0.325
+    },
+    {
+        "taxThreshold": 87001,
+        "previousTax": 19822,
+        "taxRate": 0.37
+    },
+    {
+        "taxThreshold": 180001,
+        "previousTax": 54232,
+        "taxRate": 0.45
+    }
+]
