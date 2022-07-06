@@ -7,7 +7,7 @@ EXPOSE 8080
 
 # COPY --from=maven_build /build/target/*.jar /app/test.jar
 
-ENTRYPOINT ["java", "-jar", "test.jar"]
+# ENTRYPOINT ["java", "-jar", "test.jar"]
 
 # ENTRYPOINT ["java","-jar","/*.jar"]
 
