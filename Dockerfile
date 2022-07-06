@@ -5,7 +5,7 @@ EXPOSE 8080
 
 WORKDIR /app
 
-COPY --from=MAVEN_BUILD /build/target/*.jar /app/test.jar
+COPY --from=maven_build /build/target/*.jar /app/test.jar
 
 ENTRYPOINT ["java", "-jar", "test.jar"]
 
