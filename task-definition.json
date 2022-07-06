@@ -35,4 +35,4 @@
   "inferenceAccelerators": [],
   "executionRoleArn": "arn:aws:iam::332193051105:role/ecsTaskExecutionRole",
   "tags": []
-}
+} 
