@@ -19,6 +19,7 @@
 
 ######### IMAGE BUILD ############
 FROM maven:3.8.5-amazoncorretto-11 AS MAVEN_BUILD
+EXPOSE 8080
 
 COPY pom.xml /build/
 COPY src /build/src/
@@ -29,6 +30,7 @@ RUN mvn package -Dmaven.test.skip=true
 ######### PROD IMAGE ARTIFACT COPY #############
 
 FROM amazoncorretto:11
+EXPOSE 8080
 
 WORKDIR /app
 
